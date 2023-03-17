@@ -1,157 +1,181 @@
 <template>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
+ <div >
+   <figure class="text-center text-success">
+  <blockquote class="blockquote">
+    <h1 class="display-3 ">Carbon Footprint Calculator</h1>
+  </blockquote>
+  </figure>
+
     
-    <p>Please enter your values below:</p>
+    <form @submit.prevent="handleSubmit">
 
-    <div class="mx-0 mx-sm-auto">
-  <div class="card">
-    <div class="card-body">
-      <div class="text-center">
-        <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+    <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+      <div class="card-header">Travel</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Yearly Car Mileage</h5>
+            <p>
+              Please enter your yearly mileage below:
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="mileage">Yearly Car Mileage: </label>
+          <input type="mileage" name="mileage" v-model="mileage" />
+          <div v-show="submitted && !mileage">Mileage is required</div>
+          <br /> <br />
+        </div>
 
-         <h1>Carbon Footprint Calculator</h1>
-        <p>
-          Have some ideas how to improve our product?
-          <strong>Give us your feedback.</strong>
-        </p>
+        
+        </div>
       </div>
-
-      <hr />
-
-      <form class="px-4" action="">
-        <p class="text-center"><strong>Your rating:</strong></p>
-
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
-          <label class="form-check-label" for="radio2Example1">
-            Very good
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
-          <label class="form-check-label" for="radio2Example2">
-            Good
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
-          <label class="form-check-label" for="radio2Example3">
-            Medicore
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
-          <label class="form-check-label" for="radio2Example4">
-            Bad
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example5" />
-          <label class="form-check-label" for="radio2Example5">
-            Very bad
-          </label>
-        </div>
-
-      </form>
     </div>
-    
+        
+        
+    <br /> 
 
-  </div>
-  
-</div>
-    <div class="mx-0 mx-sm-auto">
-  <div class="card">
-    <div class="card-body">
-      <div class="text-center">
-        <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
-        <p>
-          <strong>Your opinion matters</strong>
-        </p>
-        <p>
-          Have some ideas how to improve our product?
-          <strong>Give us your feedback.</strong>
-        </p>
+    <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Household</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Monthly Electric Bill</h5>
+            <p>
+              Please enter your monthly electric bill below:
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="electric" class="text-center">Monthly Electric Bill: </label>
+          <input type="electric" name="electric" v-model="electricBill" />
+          <div v-show="submitted && !electricBill">Your electric bill is required</div>
+          <br /> <br />
+        </div>
+
+        
+        </div>
       </div>
-
-      <hr />
-
-      <form class="px-4" action="">
-        <p class="text-center"><strong>Your rating:</strong></p>
-
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example1" />
-          <label class="form-check-label" for="radio2Example1">
-            Very good
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example2" />
-          <label class="form-check-label" for="radio2Example2">
-            Good
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example3" />
-          <label class="form-check-label" for="radio2Example3">
-            Medicore
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example4" />
-          <label class="form-check-label" for="radio2Example4">
-            Bad
-          </label>
-        </div>
-        <div class="form-check mb-2">
-          <input class="form-check-input" type="radio" name="exampleForm" id="radio2Example5" />
-          <label class="form-check-label" for="radio2Example5">
-            Very bad
-          </label>
-        </div>
-
-      </form>
     </div>
-    
-    <div class="card-footer text-end">
-      <button type="button" class="btn btn-success">Submit</button>
+
+    <br /> 
+
+    <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Household</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Monthly Gas Bill</h5>
+            <p>
+              Please enter your monthly gas bill below:
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="gas">Monthly Gas Bill: </label>
+        <input type="gas" name="gas" v-model="gasBill" />
+        <div v-show="submitted && !gasBill">Your gas bill is required</div>
+      <br /> <br />
+        </div>
+
+        
+        </div>
+      </div>
     </div>
-  </div>
-  
-</div>
 
-     <form @submit.prevent="handleSubmit">
-      <label for="mileage">Yearly Car Mileage: </label>
-      <input type="mileage" name="mileage" v-model="mileage" />
-      <div v-show="submitted && !mileage">Mileage is required</div>
+    <br /> 
+
+    <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Household</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Monthly Oil Bill</h5>
+            <p>
+              Please enter your monthly oil bill below:
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="oil">Monthly Oil Bill: </label>
+        <input type="oil" name="oil" v-model="oilBill" />
+        <div v-show="submitted && !oilBill">Your oil bill is required</div>
       <br /> <br />
+        </div>
 
-      <label for="electric">Monthly Electric Bill: </label>
-      <input type="electric" name="electric" v-model="electricBill" />
-      <div v-show="submitted && !electricBill">Your electric bill is required</div>
-      <br /> <br />
+        
+        </div>
+      </div>
+    </div>
 
-      <label for="gas">Monthly Gas Bill: </label>
-      <input type="gas" name="gas" v-model="gasBill" />
-      <div v-show="submitted && !gasBill">Your gas bill is required</div>
-      <br /> <br />
+    <br /> 
 
-      <label for="oil">Monthly Oil Bill: </label>
-      <input type="oil" name="oil" v-model="oilBill" />
-      <div v-show="submitted && !oilBill">Your oil bill is required</div>
-      <br /> <br />
-
-      <label for="smallFlightNum">Number of flights taken in the past year (4 hours or less): </label>
+    <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Travel</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Short Flight Number</h5>
+            <p>
+              Please enter the number of flights you've taken in the past year (4 hours or less):
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="smallFlightNum">Number of Flights: </label>
       <input type="smallFlightNum" name="smallFlightNum" v-model="smallFlightNum" />
       <div v-show="submitted && !smallFlightNum">Flight number is required</div>
       <br /> <br />
+        </div>
 
-      <label for="largeFlightNum">Number of flights taken in the past year (over 4 hours): </label>
+        
+        </div>
+      </div>
+    </div>
+
+    <br /> 
+
+     <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Travel</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Long Flight Number</h5>
+            <p>
+              Please enter the number of flights you've taken in the past year (over 4 hours):
+            </p>
+          </div>
+        <div class="text-center">
+        <label for="largeFlightNum">Number of flights taken in the past year (over 4 hours): </label>
       <input type="largeFlightNum" name="largeFlightNum" v-model="largeFlightNum" />
       <div v-show="submitted && !largeFlightNum">Flight number is required</div>
       <br /> <br />
+        </div>
 
-      <p>Do you recycle paper?</p>
+        
+        </div>
+      </div>
+    </div>
+
+    <br /> 
+
+     <div class="col d-flex justify-content-center">
+      <div class="card border-success mb-3 border border-2" style="width: 50rem;">
+        <div class="card-header">Household</div>
+        <div class="card-body">
+          <div class="text-center">
+            <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+            <h5 class="card-title">Recycling</h5>
+            <p>
+              Please choose whether you recycle the following materials:
+            </p>
+          </div>
+        <div class="text-center">
+         <p>Do you recycle paper?</p>
       <input type="radio" id="recyclePaper" value="Yes" v-model="recyclePaper" />
       <label for="recyclePaper">Yes</label>
 
@@ -159,7 +183,7 @@
       <label for="recyclePaper">No</label>
       <br /> <br />
 
-       <p>Do you recycle tin and aluminum?</p>
+        <p>Do you recycle tin and aluminum?</p>
       <input type="radio" id="recycleTin" value="Yes" v-model="recycleTin" />
       <label for="recyclePaper">Yes</label>
 
@@ -168,11 +192,28 @@
       <br /> <br />
 
 
-      <button v-on:click="handleSubmit">Calculate Footprint</button>
-      <br /> <br />
+        </div>
+        
+        </div>
+      </div>
+    </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#resultsModal" v-on:click="handleSubmit">Calculate Footprint</button>
+        <br /> <br />
+      </div>
     </form>
 
-    <p>Total Carbon Footprint: {{ totalFootprint }}</p>
+
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Results</h5>
+        <button type="button" class="btn-success" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Total Carbon Footprint: {{ totalFootprint }}</p>
     <br /> <br />
 
     <p>Total Household Carbon Footprint: {{ homeFootprint }}</p>
@@ -181,8 +222,20 @@
     <p>Total Travel Carbon Footprint: {{ travelFootprint }}</p>
     <br /> <br />
 
-     <p>You're Carbon Footprint Rating: {{ rating }}</p>
+     <p>Your Carbon Footprint Rating: {{ rating }}</p>
     <br /> <br />
+
+    <strong> Results not what you expected?</strong>
+    <br>
+    <p>Just Energy have the best resources for finding out how you can improve your carbon footprint rating further.</p><a href="https://justenergy.com/blog/15-ways-reduce-carbon-footprint-greenhouse-gas/">See here</a>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 
    
@@ -211,7 +264,7 @@
         totalFootprint: 0,
         homeFootprint: 0,
         travelFootprint: 0,
-        rating : "Neutral.",
+        rating : "Good",
 
       }
     },
@@ -241,14 +294,32 @@
           this.homeFootprint = this.homeFootprint + this.carbonRecycleTin;
         }
 
+        if (this.totalFootprint <= 6000){
+          this.rating = "Very Low"
+        }
+
+         if (this.totalFootprint > 6000 && this.totalFootprint <= 15999){
+          this.rating = "Low"
+        }
+
+        if (this.totalFootprint >= 16000 && this.totalFootprint <= 22000){
+          this.rating = "Average"
+        }
+
+        if (this.totalFootprint > 22000){
+          this.rating = "High"
+        }
+
 
       },
+      
     }
   }
 
 </script>
 
 <style scoped>
+
 
 
 </style>
